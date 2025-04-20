@@ -1,6 +1,6 @@
 import WishCard, { Wish } from "./WishCard";
 
-
+//
 export default async function Home() {
   
   const url:string | undefined = process.env.BACKEND_URL;

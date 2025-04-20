@@ -17,8 +17,8 @@ export default function WishCard({data}: {data:Wish}) {
             {!data.Assigned && (<><input type="text" placeholder="Want to reserve?" className="input input-primary"></input> <button className="btn btn-primary">Reserve Item</button></>)}
         </div>
         <div className="flex gap-2">
-        <button className="btn btn-primary"> <a href={data.link}> Link </a></button>
-        {data.link2 && (<button className="btn btn-secondary"><a href={data.link2}>Link 2</a></button>)}
+        <a href={data.link}> <button className="btn btn-primary">  Link </button> </a>
+        {data.link2 && (<a href={data.link2}> <button className="btn btn-secondary">Link 2</button> </a>)}
         </div>
     </div>
   )
