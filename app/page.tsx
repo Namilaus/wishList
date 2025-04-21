@@ -1,3 +1,4 @@
+'use server';
 import WishCard, { Wish } from "./WishCard";
 
 //
