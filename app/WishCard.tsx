@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 
 
@@ -12,28 +13,42 @@ export type Wish = {
   }
 
 
-
 export default function WishCard({data}: {data:Wish}) {
   const [reserve, setReserve] = useState('');
+  const router = useRouter();
   
   function handleLink(link?:string){
     window.open(link)
     
   }
   
-  function handleReserve(){
-    //TODO 
+  async function handleReserve(){
+    //TODO
+    const desc = data.desc;
+    const name = reserve; // API accepts desc and name
+    
+    const url:string | undefined = process.env.NEXT_PUBLIC_BACKEND_URL;
+    console.log(url)
+    
+    const res = await fetch(url! ,{
+      method : 'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify({desc, name})
+    });
+    
+    const status = await res.status;
+    if(status != 200 ){
+      router.push("./TRY-AGAIN")
+    }
+    router.refresh();
+
   }
   
   function handleInput(event:any){
   setReserve(event.target.value)
   }
-
-
-
-
-
-
 
   return (
     
